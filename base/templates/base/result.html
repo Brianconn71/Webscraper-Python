@@ -1,16 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
 
-        <table class="table table-striped">
+    <div class="container">
+
+      <div class="row m-5">
+        <div class="col-md-6">
+          <!-- form action="/" means we want to relaod the homepage when form is submitted  -->
+          <form method="POST" action="/">
+            {% csrf_token %}
+            <input type="text" class="form-control" id="site" name="site" placeholder="Enter a Site Url">
+          </form>
+        </div>
+          <div class="col-md-6">
+            <button class="btn btn-primary" type="submit">Submit</button>
+            <a href="/delete" class="btn btn-warning">Delete</a>
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8">
+          <table class="table table-striped">
             <thead>
               <tr>
                 <th scope="col">ID</th>
@@ -19,7 +42,7 @@
               </tr>
             </thead>
             <tbody>
-                {% for link in data %}
+              {% for link in data %}
               <tr>
                 <td>{{ link.id }}</td>
                 <td>{{ link.name }}</td>
@@ -28,7 +51,15 @@
             </tbody>
             {% endfor %}
           </table>
+        </div>
+      </div>
+    </div>
+    
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
