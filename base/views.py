@@ -8,7 +8,7 @@ from .models import Link
 
 def scrape(request):
     if request.method == "POST":
-        site = request.POST.get('site')
+        site = request.POST.get('site', '')
         page = requests.get(site)
         soup = BeautifulSoup(page.text, 'html.parser')
     
@@ -16,13 +16,21 @@ def scrape(request):
             link_address = x.get('href')
             link_text = x.string
             Link.objects.create(address=link_address, name=link_text)
-        return 
-    
-    data = Link.objects.all()
-    
+        return HttpResponseRedirect('/')
+    else:
+        data = Link.objects.all()
+
     template = 'base/result.html'
     context = {
         'data': data,
     }
     
     return render(request, template, context)
+
+
+def clear(request):
+    Link.objects.all().delete()
+    
+    template = 'base/result.html'
+    
+    return render(request, template)

@@ -11,24 +11,29 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Link Collector</title>
   </head>
   <body>
 
     <div class="container">
+      <div class="row">
+        <div class="col-12 m-5">
+          <h1>Link Collector</h1>
+        </div>
+      </div>
 
       <div class="row m-5">
-        <div class="col-md-6">
+        <div class="col-md-8">
           <!-- form action="/" means we want to relaod the homepage when form is submitted  -->
           <form method="POST" action="/">
             {% csrf_token %}
             <input type="text" class="form-control" id="site" name="site" placeholder="Enter a Site Url">
-          </form>
-        </div>
-          <div class="col-md-6">
-            <button class="btn btn-primary" type="submit">Submit</button>
+            <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
+            <button class="btn btn-primary me-3" type="submit">Submit</button>
             <a href="/delete" class="btn btn-warning">Delete</a>
           </div>
+          </form>
+        </div>
       </div>
 
       <div class="row">
